@@ -1,26 +1,24 @@
 import { RuleSetRule } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export const buildLoaders = ( isDev: boolean ): RuleSetRule[] => {
+export const buildLoaders = (isDev: boolean): RuleSetRule[] => {
 	const assetLoader = {
 		test: /\.(png|svg|jpg|jpeg|gif)$/i,
-		type: 'asset/resource'
+		type: 'asset/resource',
 	};
 
 	const svgLoader = {
 		test: /\.svg$/,
-		use: [ '@svgr/webpack' ],
+		use: ['@svgr/webpack'],
 	};
 
 	const babelLoader = {
 		test: /\.(js|jsx|tsx)$/,
 		loader: 'babel-loader',
 		options: {
-			presets: [
-				[ '@babel/preset-env' ]
-			]
+			presets: [['@babel/preset-env']],
 		},
-		exclude: /node_modules/
+		exclude: /node_modules/,
 	};
 
 	const tsLoader = {
@@ -37,21 +35,16 @@ export const buildLoaders = ( isDev: boolean ): RuleSetRule[] => {
 				loader: 'css-loader',
 				options: {
 					modules: {
-						auto: ( resPath: string ) => resPath.includes( '.module' ),
-						localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
-					}
+						auto: (resPath: string) => resPath.includes('.module'),
+						localIdentName: isDev
+							? '[path][name]__[local]--[hash:base64:5]'
+							: '[hash:base64:8]',
+					},
 				},
 			},
 			'sass-loader',
 		],
 	};
 
-
-	return [
-		assetLoader,
-		svgLoader,
-		babelLoader,
-		tsLoader,
-		scssLoader
-	];
+	return [assetLoader, svgLoader, babelLoader, tsLoader, scssLoader];
 };

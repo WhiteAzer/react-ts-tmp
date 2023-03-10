@@ -3,12 +3,12 @@ import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { StrictMode } from 'react';
 
-const root = createRoot( document.getElementById( 'root' ) as HTMLElement );
+const root = createRoot(document.getElementById('root') as HTMLElement);
 
-root.render( (
+root.render(
 	<StrictMode>
 		<BrowserRouter>
-			<App/>
+			<App />
 		</BrowserRouter>
 	</StrictMode>
-) );
+);
