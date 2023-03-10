@@ -1,6 +1,6 @@
-import "./styles/index.scss";
+import './styles/index.scss';
 
 
 export const App = () => {
-  return (<div/> );
-}
+	return (<div/> );
+};
